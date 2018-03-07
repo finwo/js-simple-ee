@@ -33,13 +33,13 @@ suite.addTest(new Test('Verifying file list',function() {
 co(function* () {
   files = (yield fs.scandir(approot))
     .filter(function (filename) {
-      if ( filename.substr(-3) !== '.js' ) return false;
-      if ( filename.substr(-7) === '.min.js' ) return false;
-      if ( filename.indexOf(path.sep + '.git' + path.sep) >= 0 ) return false;
-      if ( filename.indexOf(path.sep + '.idea' + path.sep) >= 0 ) return false;
-      if ( filename.indexOf(path.sep + 'node_modules' + path.sep) >= 0 ) return false;
-      if ( filename.indexOf(path.sep + 'lib' + path.sep + 'browser.js') >= 0 ) return false;
-      if ( filename.indexOf(path.sep + 'docs' + path.sep + 'assets' + path.sep + 'client.js') >= 0 ) return false;
+      if ( filename.substr(-3) !== '.js' ) { return false; }
+      if ( filename.substr(-7) === '.min.js' ) { return false; }
+      if ( filename.indexOf(path.sep + '.git' + path.sep) >= 0 ) { return false; }
+      if ( filename.indexOf(path.sep + '.idea' + path.sep) >= 0 ) { return false; }
+      if ( filename.indexOf(path.sep + 'node_modules' + path.sep) >= 0 ) { return false; }
+      if ( filename.indexOf(path.sep + 'lib' + path.sep + 'browser.js') >= 0 ) { return false; }
+      if ( filename.indexOf(path.sep + 'docs' + path.sep + 'assets' + path.sep + 'client.js') >= 0 ) { return false; }
       return true;
     });
 
