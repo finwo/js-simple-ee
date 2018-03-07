@@ -1,6 +1,12 @@
 Simple EE
 =========
 
+[![npm](https://img.shields.io/npm/v/simple-ee.svg?style=flat-square)](https://npmjs.com/package/simple-ee/)
+[![Scrutinizer Build](https://img.shields.io/scrutinizer/build/g/finwo/js-simple-ee.svg?style=flat-square)](https://scrutinizer-ci.com/g/finwo/js-simple-ee/)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/finwo/js-simple-ee.svg?style=flat-square)](https://scrutinizer-ci.com/g/finwo/js-simple-ee/)
+[![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/finwo/js-simple-ee.svg?style=flat-square)](https://scrutinizer-ci.com/g/finwo/js-simple-ee/)
+[![npm](https://img.shields.io/npm/l/simple-ee.svg?style=flat-square)](https://npmjs.com/package/simple-ee/)
+
 Simple event emitter
 
 ## Contributing
