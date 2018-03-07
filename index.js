@@ -1,4 +1,5 @@
 (function(factory) {
+  /** global: define */
   if ( ( 'undefined' !== module ) && ( 'undefined' !== module.exports ) ) {
     module.exports = factory();
   } else if ( ( 'function' === typeof define ) && define.amd ) {
@@ -12,7 +13,7 @@
   }
 })(function() {
   return function EE() {
-    if ( this === global ) return new EE();
+    if ( this === (global||window) ) { return new EE(); }
     var listeners = [];
     this.on = function( name, handler ) {
       listeners.push({
