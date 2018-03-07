@@ -28,10 +28,15 @@
       });
       return this;
     };
-    this.emit = function( name, data ) {
+    this.emit = function() {
+      var args = arguments;
+      args = Object.keys(args).map(function(key) {
+        return args[key];
+      });
+      var name = args.shift();
       listeners.forEach(function(listener) {
         if ( listener.name !== name ) return;
-        listener.handler( data );
+        listener.handler.apply(this,args.slice());
       });
     };
     this.once = function( name, handler ) {
