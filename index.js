@@ -14,35 +14,32 @@
 })(function() {
   return function EE() {
     if ( this === (global||window) ) { return new EE(); }
-    var listeners = [];
+    this._events = {};
     this.on = function( name, handler ) {
-      listeners.push({
-        name    : name,
-        handler : handler,
-      });
+      (this._events[name]=this._events[name]||[])
+        .push(handler);
       return this;
     };
     this.off = function( name, handler ) {
-      listeners = listeners.filter(function(listener) {
-        return !(listener.name === name && listener.handler === handler );
-      });
+      this._events[name]= (this._events[name]||[])
+        .filter(function(listener) {
+          return handler !== listener;
+        });
       return this;
     };
     this.emit = function() {
-      var args = arguments;
-      args = Object.keys(args).map(function(key) {
-        return args[key];
-      });
-      var name = args.shift();
-      listeners.forEach(function(listener) {
-        if ( listener.name !== name ) return;
-        listener.handler.apply(this,args.slice());
-      });
+      var args = Array.prototype.slice.call(arguments),
+          name = args.shift();
+      (this._events[name]=this._events[name]||[])
+        .forEach(function(handler) {
+          handler.apply(this,args.slice());
+        });
+      return this;
     };
     this.once = function( name, handler ) {
       this.on(name,function g() {
         this.off(name,g);
-        handler.apply(undefined,arguments);
+        handler.apply(this,arguments);
       });
     };
     this.addListener    = this.on;
