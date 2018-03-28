@@ -1,6 +1,6 @@
 {
   "name": "simple-ee",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "Simple event emitter",
   "main": "index.js",
   "scripts": {
