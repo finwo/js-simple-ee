@@ -12,22 +12,23 @@
     throw new Error("Could not initialize EE");
   }
 })(function() {
-  return function EE() {
-    if ( this === (global||window) ) { return new EE(); }
-    this._events = {};
-    this.on = function( name, handler ) {
+  return function EE( subject ) {
+    subject = subject || this;
+    if ( subject === (global||window) ) { return new EE(); }
+    subject._events = {};
+    subject.on = function( name, handler ) {
       (this._events[name]=this._events[name]||[])
         .push(handler);
       return this;
     };
-    this.off = function( name, handler ) {
+    subject.off = function( name, handler ) {
       this._events[name]= (this._events[name]||[])
         .filter(function(listener) {
           return handler !== listener;
         });
       return this;
     };
-    this.emit = function() {
+    subject.emit = function() {
       var args = Array.prototype.slice.call(arguments),
           name = args.shift();
       (this._events[name]=this._events[name]||[])
@@ -36,13 +37,14 @@
         });
       return this;
     };
-    this.once = function( name, handler ) {
+    subject.once = function( name, handler ) {
       this.on(name,function g() {
         this.off(name,g);
         handler.apply(this,arguments);
       });
     };
-    this.addListener    = this.on;
-    this.removeListener = this.off;
+    subject.addListener    = this.on;
+    subject.removeListener = this.off;
+    subject.trigger        = this.emit;
   };
 });
