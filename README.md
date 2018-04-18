@@ -1,6 +1,8 @@
 Simple EE
 =========
 
+[![Codetree](https://codetree.com/images/managed-with-codetree.svg)](https://codetree.com/projects/gX1r)
+
 [![npm](https://img.shields.io/npm/v/simple-ee.svg?style=flat-square)](https://npmjs.com/package/simple-ee/)
 [![Scrutinizer Build](https://img.shields.io/scrutinizer/build/g/finwo/js-simple-ee.svg?style=flat-square)](https://scrutinizer-ci.com/g/finwo/js-simple-ee/)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/finwo/js-simple-ee.svg?style=flat-square)](https://scrutinizer-ci.com/g/finwo/js-simple-ee/)
