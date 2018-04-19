@@ -30,11 +30,11 @@
     };
     subject.emit = function() {
       var args = Array.prototype.slice.call(arguments),
-          name = args.shift();
-      (this._events[name]=this._events[name]||[])
-        .forEach(function(handler) {
-          handler.apply(this,args.slice());
-        });
+          name = args.shift(),
+          list = (this._events[name]=this._events[name]||[]).concat(this._events['*']||[]);
+      list.forEach(function(handler) {
+        handler.apply(this,args.slice());
+      });
       return this;
     };
     subject.once = function( name, handler ) {
