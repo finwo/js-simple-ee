@@ -185,8 +185,13 @@ Because of compatibility with a previous module of mine & common practices, the 
 
 First, look at the [issues page](https://github.com/finwo/js-simple-ee/issues) to ensure your issue isn't already known. If it's not, you can create a new issue with a detailed description of what happened & how to reproduce the unexpected behavior.
 
-If you decide to take on the challenge of fixing a known (or unknown) issue, you can do so by sending in a pull request from your own fork of the project. Once it has been tested (manually for now) and approved, it will be merged into the master branch of the repository.
+Supporting this project can be done in multiple ways, as listed below.
+
+- [Open an issue](https://github.com/finwo/js-simple-ee/issues) about a bug you found or to request a new feature
+- [Open a pull request](https://github.com/finwo/js-simple-ee/pulls) to fix a bug you found or to implement a new feature
+- [Contribute on patreon](https://patreon.com/finwo)
 
 ## License
 
 [MIT](https://github.com/finwo/js-simple-ee/blob/master/LICENSE.md) (c) [Finwo](https://github.com/finwo)
+
