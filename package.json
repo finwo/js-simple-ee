@@ -23,6 +23,6 @@
     "jshint": "^2.9.5",
     "nyc": "^11.4.1",
     "serial-mocha": "0.0.4",
-    "trackthis-helpers": "^0.4.2"
+    "trackthis-helpers": "^2.1.0"
   }
 }
