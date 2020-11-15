@@ -1,6 +1,6 @@
 (function(factory) {
   /** global: define */
-  if ( ( 'undefined' !== module ) && ( 'undefined' !== module.exports ) ) {
+  if ( ( 'undefined' !== typeof module ) && ( 'undefined' !== typeof module.exports ) ) {
     module.exports = factory();
   } else if ( ( 'function' === typeof define ) && define.amd ) {
     define([],factory);
