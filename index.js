@@ -13,38 +13,38 @@
   }
 })(function() {
   return function EE( subject ) {
+    var root = (new Function('return this;')).call();
     subject = subject || this;
-    if ( subject === (global||window) ) { return new EE(); }
-    subject._events = {};
-    subject.on = function( name, handler ) {
-      (this._events[name]=this._events[name]||[])
-        .push(handler);
-      return this;
-    };
-    subject.off = function( name, handler ) {
-      this._events[name]= (this._events[name]||[])
-        .filter(function(listener) {
-          return handler !== listener;
+    if (subject === root) return new EE();
+    var events = {};
+    subject.__proto__ = Object.assign({},subject.__proto__,{
+      on: function( name, handler ) {
+        if ('function' !== typeof handler) return this;
+        (events[name]=events[name]||[]).push(handler);
+        return this;
+      },
+      off: function( name, handler ) {
+        events[name] = (events[name]||[]).filter(function(fn) {
+          return handler !== fn;
         });
-      return this;
-    };
-    subject.emit = function() {
-      var args = Array.prototype.slice.call(arguments),
-          name = args.shift(),
-          list = (this._events[name]=this._events[name]||[]).concat(this._events['*']||[]);
-      list.forEach(function(handler) {
-        handler.apply(this,args.slice());
-      });
-      return this;
-    };
-    subject.once = function( name, handler ) {
-      this.on(name,function g() {
-        this.off(name,g);
-        handler.apply(this,arguments);
-      });
-    };
-    subject.addListener    = this.on;
-    subject.removeListener = this.off;
-    subject.trigger        = this.emit;
+        return this;
+      },
+      emit: function( name, data ) {
+        var args = [].slice.call(arguments);
+        name = args.shift(),
+        list = (events[name]=events[name]||[]).concat(events['*']||[]);
+        list.forEach(function(handler) {
+          handler.apply(this,args.slice());
+        });
+        return this;
+      },
+      once: function( name, handler ) {
+        return this.on(name,function fn() {
+          this.off(name,fn);
+          this.apply(this,arguments);
+        });
+      },
+    });
+    return subject;
   };
 });
