@@ -4,7 +4,8 @@
   "description": "Simple event emitter",
   "main": "index.js",
   "scripts": {
-    "test": "DEBUG=1 node_modules/.bin/nyc node_modules/.bin/serial-mocha test/* --sort | tee test-output.txt && ./node_modules/.bin/nyc report --reporter=clover && ! grep -q -oP \"\\d+\\sfailing\" test-output.txt && rm test-output.txt || { echo \"Test output is located in 'test-output.txt'\" ; exit 1 ; }"
+    "test": "echo 'Testing has been disabled on this repository'",
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"simple-ee@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
   },
   "repository": {
     "type": "git",
@@ -15,14 +16,13 @@
   "bugs": {
     "url": "https://github.com/finwo/js-simple-ee/issues"
   },
+  "files": [
+    "LICENSE.md",
+    "index.js",
+    "README.md"
+  ],
   "homepage": "https://github.com/finwo/js-simple-ee#readme",
-  "devDependencies": {
-    "clover": "0.0.1",
-    "co": "^4.6.0",
-    "fs-extra": "^9.0.0",
-    "jshint": "^2.9.5",
-    "nyc": "^15.0.0",
-    "serial-mocha": "0.0.4",
-    "trackthis-helpers": "^2.1.0"
+  "funding": {
+    "url": "https://github.com/sponsors/finwo"
   }
 }

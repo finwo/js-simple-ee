@@ -1,6 +1,1 @@
-.idea/
-.zedstate
-*.swp
 node_modules/
-.nyc_output/
-coverage/
