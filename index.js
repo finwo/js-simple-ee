@@ -12,7 +12,7 @@
     throw new Error("Could not initialize EE");
   }
 })(function() {
-  return function EE( subject ) {
+  function EE( subject ) {
     var root = (new Function('return this;')).call();
     subject = subject || this;
     if (subject === root) return new EE();
@@ -47,4 +47,6 @@
     });
     return subject;
   };
+  EE.default = EE;
+  return EE;
 });
